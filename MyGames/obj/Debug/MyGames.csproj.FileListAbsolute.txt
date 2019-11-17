@@ -1,0 +1,6 @@
+G:\vs workspace\MyGames\MyGames\bin\Debug\MyGames.exe.config
+G:\vs workspace\MyGames\MyGames\bin\Debug\MyGames.exe
+G:\vs workspace\MyGames\MyGames\bin\Debug\MyGames.pdb
+G:\vs workspace\MyGames\MyGames\obj\Debug\MyGames.exe
+G:\vs workspace\MyGames\MyGames\obj\Debug\MyGames.pdb
+G:\vs workspace\MyGames\MyGames\obj\Debug\MyGames.csprojResolveAssemblyReference.cache
