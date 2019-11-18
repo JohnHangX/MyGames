@@ -22,6 +22,24 @@ public class GamesManager  {
         ShowWindow(GetForegroundWindow(), SW_SHOWMINIMIZED);
         SelectGame();
     }
+
+    private static GamesManager _instance;
+    private GamesManager()
+    {
+
+    }
+
+    public static GamesManager Instance
+    {
+        get
+        {
+            if(_instance == null)
+            {
+                _instance = new GamesManager();
+            }
+            return _instance;
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
