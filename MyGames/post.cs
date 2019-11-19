@@ -3,9 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
-using UnityEngine;
 
-public class post : MonoBehaviour {
+public class post {
 
     public string Post(string Url, string jsonParas)
     {
@@ -35,7 +34,7 @@ public class post : MonoBehaviour {
         catch (Exception)
         {
             writer = null;
-            print("连接服务器失败!");
+            Console.WriteLine("连接服务器失败!");
             return "";
         }
         //将请求参数写入流

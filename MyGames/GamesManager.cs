@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
 using System;
+using MyGames;
 
 public class GamesManager  {
 
@@ -12,14 +13,19 @@ public class GamesManager  {
     public event ListenerHandler Listener;
     private Process curGame;
     private EventHandler exitGameHandler;
-    DirectoryInfo[] gamesDics;
-    List<string> gamesList = new List<string>();
+    List<GamePlayData> gamesList = new List<GamePlayData>();
     int curGameIndex = 0;
-    void Start () {
+    GamePlayData curGameData;
+    public void Init (List<GamePlayData> playList) {
         exitGameHandler = new EventHandler(NextProgress);
-       
+        for (int i = 0; i < playList.Count; i++)
+        {
+            gamesList.Add(playList[i]);
+        }
         curGameIndex = 0;
-        ShowWindow(GetForegroundWindow(), SW_SHOWMINIMIZED);
+        curGameData = null;
+        fileDir = "Games/";
+        //ShowWindow(GetForegroundWindow(), SW_SHOWMINIMIZED);
         SelectGame();
     }
 
@@ -73,7 +79,18 @@ public class GamesManager  {
 
     void SelectGame()
     {
-        string gameName = gamesList[curGameIndex];
+        string gameName = "";
+        if (curGameData == null)
+        {
+            curGameData = gamesList[0];
+            gameName = curGameData.gameName;
+        }
+        else
+        {
+            gameName = curGameData.nextGameName;
+            curGameData = Program.GamesPlay[gameName];
+        }
+        
         string exeName = fileDir + gameName + "/" + gameName + ".exe";
         StartProgress(exeName, gameName);
     }
@@ -82,8 +99,6 @@ public class GamesManager  {
     {
         WinExec(path, 4);
         AddExitProcessFunc(gameName);
-
-
     }
 
     void AddExitProcessFunc(string gameName)
@@ -112,25 +127,25 @@ public class GamesManager  {
     void NextProgress(object obj, EventArgs e)
     {
         curGame.Exited -= exitGameHandler;
-        int gamesLen = gamesList.Count;
-        curGameIndex += 1;
-        if (curGameIndex >= gamesLen)
-        {
-            curGameIndex = 0;
-            return;
-        }
+        //int gamesLen = gamesList.Count;
+        //curGameIndex += 1;
+        //if (curGameIndex >= gamesLen)
+        //{
+        //    curGameIndex = 0;
+        //    return;
+        //}
         SelectGame();
     }
     void NextProgress()
     {
         curGame.Exited -= exitGameHandler;
-        int gamesLen = gamesList.Count;
-        curGameIndex += 1;
-        if (curGameIndex >= gamesLen)
-        {
-            curGameIndex = 0;
-            return;
-        }
+        //int gamesLen = gamesList.Count;
+        //curGameIndex += 1;
+        //if (curGameIndex >= gamesLen)
+        //{
+        //    curGameIndex = 0;
+        //    return;
+        //}
         SelectGame();
     }
 

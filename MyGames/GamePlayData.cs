@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyGames
 {
-    class GamePlayData
+    public class GamePlayData
     {
         public GamePlayData(string name, short time, string nextGame)
         {
