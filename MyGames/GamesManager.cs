@@ -127,31 +127,23 @@ public class GamesManager  {
     void NextProgress(object obj, EventArgs e)
     {
         curGame.Exited -= exitGameHandler;
-        //int gamesLen = gamesList.Count;
-        //curGameIndex += 1;
-        //if (curGameIndex >= gamesLen)
-        //{
-        //    curGameIndex = 0;
-        //    return;
-        //}
         SelectGame();
     }
     void NextProgress()
     {
         curGame.Exited -= exitGameHandler;
-        //int gamesLen = gamesList.Count;
-        //curGameIndex += 1;
-        //if (curGameIndex >= gamesLen)
-        //{
-        //    curGameIndex = 0;
-        //    return;
-        //}
-        SelectGame();
+
+        //SelectGame();
     }
 
-    void OnApplicationQuit()
+    void Dispose()
     {
         if (curGame != null)
             curGame.Exited -= exitGameHandler;
+    }
+
+    ~GamesManager()
+    {
+        Dispose();
     }
 }

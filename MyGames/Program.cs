@@ -22,6 +22,7 @@ namespace MyGames
         public static Dictionary<string, GamePlayData> GamesPlay = new Dictionary<string, GamePlayData>();
         public static List<GamePlayData> playList = new List<GamePlayData>();
         private static GamesManager mgr;
+        private static GameServer server;
         static void Main(string[] args)
         {
             Console.WriteLine("启动程序");
@@ -33,6 +34,7 @@ namespace MyGames
             {
                 Console.Write(string.Format("name:{0} ,time:{1} ,nextName:{2}\n", item.gameName, item.gameTime, item.nextGameName));
             }
+            server = GameServer.Instance;
             mgr = GamesManager.Instance;
             mgr.Init(playList);
             Console.ReadLine();

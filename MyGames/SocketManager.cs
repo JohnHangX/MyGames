@@ -125,12 +125,17 @@ public class SocketManager {
 
     #endregion
 
-    public void OnApplicationQuit()
+    public void Dispose()
     {
-        //serverSocket.Shutdown(SocketShutdown.Both);
-        //serverSocket.Close();
+        serverSocket.Shutdown(SocketShutdown.Both);
+        serverSocket.Close();
         //clientSocket.Disconnect(true);
         //clientSocket.Shutdown(SocketShutdown.Both);
         //clientSocket.Close();
+    }
+
+    ~SocketManager()
+    {
+        Dispose();
     }
 }
