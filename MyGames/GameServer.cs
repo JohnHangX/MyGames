@@ -28,6 +28,7 @@ namespace MyGames
 
         void ServerHandle(string msg)
         {
+
             Console.WriteLine(msg);
         }
 

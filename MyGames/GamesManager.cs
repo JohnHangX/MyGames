@@ -127,7 +127,7 @@ public class GamesManager  {
     void NextProgress(object obj, EventArgs e)
     {
         curGame.Exited -= exitGameHandler;
-        SelectGame();
+        //SelectGame();
     }
     void NextProgress()
     {
